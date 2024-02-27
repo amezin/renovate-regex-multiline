@@ -1,0 +1,19 @@
+{
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "extends": [
+        "config:recommended"
+    ],
+    "customManagers": [
+        {
+            "customType": "regex",
+            "fileMatch": ["^image\\.sh$"],
+            "matchStrings": [
+                "IMAGE_VERSION=(?<currentValue>.*)\\n",
+                "IMAGE_DIGEST=(?<currentDigest>.*)\\n"
+            ],
+            "matchStringsStrategy": "combination",
+            "datasourceTemplate": "docker",
+            "depNameTemplate": "ghcr.io/renovatebot/renovate"
+        }
+    ]
+}
